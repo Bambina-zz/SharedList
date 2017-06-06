@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         api.getErrandList("3441433b-81df-4092-aa31-54863797afb4")
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
-                        onNext = { print(it.errand.name); print(it.errand.shared_hash) },
+                        onNext = { print(it.errand.name); print(it.tasks) },
                         onComplete = { println("Done") },
                         onError = { it.printStackTrace() }
                 )
