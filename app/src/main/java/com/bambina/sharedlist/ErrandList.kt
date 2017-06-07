@@ -6,5 +6,5 @@ package com.bambina.sharedlist
 
 data class ErrandList (
         val errand : Errand,
-        val tasks : List<Task>
+        val tasks : ArrayList<Task>
 )
