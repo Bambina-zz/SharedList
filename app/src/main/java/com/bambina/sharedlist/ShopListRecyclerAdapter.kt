@@ -4,6 +4,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.jakewharton.rxbinding2.view.RxView
+
 import kotlinx.android.synthetic.main.list_item.view.*
 
 /**
@@ -26,6 +28,8 @@ class ShopListRecyclerAdapter(val tasks : ArrayList<Task>) : RecyclerView.Adapte
         fun setData(data: Task) {
             itemView.list_item_text.text = data.name
             itemView.done.isChecked = data.done
+
+            RxView.clicks(itemView).subscribe { println("tapped" + data.name) }
         }
     }
 }
