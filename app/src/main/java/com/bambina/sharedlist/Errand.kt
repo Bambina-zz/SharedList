@@ -5,7 +5,7 @@ package com.bambina.sharedlist
  */
 
 data class Errand (
-        val id : Int,
+        val id : String,
         val name: String,
         val shared_hash : String
 )

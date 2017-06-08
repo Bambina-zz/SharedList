@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
             title = data.errand.name
 
             data.tasks.sortBy { it.name }
-            recycler_view.adapter = ShopListRecyclerAdapter(data.tasks)
+            recycler_view.adapter = ShopListRecyclerAdapter(data)
         }
     }
 }

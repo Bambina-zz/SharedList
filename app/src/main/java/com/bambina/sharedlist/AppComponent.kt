@@ -13,4 +13,6 @@ interface AppComponent {
     fun api(): ShopListApi
 
     fun inject(activity : MainActivity)
+
+    fun inject(holder : ShopListRecyclerAdapter.ViewHolder)
 }

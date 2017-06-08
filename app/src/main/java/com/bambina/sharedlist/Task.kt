@@ -5,6 +5,8 @@ package com.bambina.sharedlist
  */
 
 data class Task (
+        val id : String,
+        val errand_id : String,
         val name : String,
         val done : Boolean
 )

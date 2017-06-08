@@ -7,4 +7,6 @@ import io.reactivex.Observable
  */
 interface ShopListApi {
     fun getErrandList(listUrl : String): Observable<ErrandList>
+
+    fun updateTaskDone(errandId : String, taskId : String, done : HashMap<String, String>): Observable<Unit>
 }
