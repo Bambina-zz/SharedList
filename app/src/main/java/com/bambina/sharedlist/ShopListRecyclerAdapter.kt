@@ -1,9 +1,11 @@
 package com.bambina.sharedlist
 
+import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.bambina.sharedlist.ShopListApplication.Companion.application
 import com.jakewharton.rxbinding2.view.RxView
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -15,11 +17,11 @@ import javax.inject.Inject
 /**
  * Created by hirono-mayuko on 2017/06/06.
  */
-class ShopListRecyclerAdapter(val data : ErrandList) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ShopListRecyclerAdapter(val data : ErrandList, val context : Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
         val view = LayoutInflater.from(parent?.context).inflate(R.layout.list_item, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(view, context)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
@@ -28,7 +30,7 @@ class ShopListRecyclerAdapter(val data : ErrandList) : RecyclerView.Adapter<Recy
 
     override fun getItemCount(): Int = data.tasks.size
 
-    class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView : View, val context: Context) : RecyclerView.ViewHolder(itemView) {
 
         @Inject
         lateinit var api : ShopListApi
@@ -62,8 +64,12 @@ class ShopListRecyclerAdapter(val data : ErrandList) : RecyclerView.Adapter<Recy
                                 }
                             },
                             onComplete = { println("update done.") },
-                            onError = { it.printStackTrace() }
+                            onError = { displayToast(it.toString()) }
                     )
+        }
+
+        private fun displayToast(msg : String){
+            Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
         }
     }
 }
