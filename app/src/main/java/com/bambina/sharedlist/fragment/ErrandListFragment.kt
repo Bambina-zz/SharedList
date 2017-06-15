@@ -3,6 +3,7 @@ package com.bambina.sharedlist.fragment
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,7 +29,12 @@ class ErrandListFragment(val errands : Array<Errand>, val mainActivity: MainActi
 
         // Initializing RecyclerView.
         recycler_view?.setHasFixedSize(true)
-        recycler_view?.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
+        recycler_view?.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false) as RecyclerView.LayoutManager
         recycler_view?.adapter = ErrandRecyclerAdapter(errands, mainActivity)
+
+        // Initializing FloatingActionButton
+        fab.setOnClickListener{
+            _ -> println("tapped!")
+        }
     }
 }

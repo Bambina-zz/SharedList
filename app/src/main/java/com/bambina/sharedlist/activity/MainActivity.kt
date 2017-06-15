@@ -18,7 +18,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Creating mock data.
-        val errands : Array<Errand> = arrayOf(Errand(id = "0", name = "買い物", shared_hash = "3441433b-81df-4092-aa31-54863797afb4"),
+        val errands : Array<Errand> = arrayOf(
+                Errand(id = "0", name = "買い物", shared_hash = "3441433b-81df-4092-aa31-54863797afb4"),
                 Errand(id = "1", name = "お使い", shared_hash = "42218140-9578-47ce-9442-6c0ba0ef59ac"),
                 Errand(id = "2", name = "買い物", shared_hash = "3441433b-81df-4092-aa31-54863797afb4"))
 
