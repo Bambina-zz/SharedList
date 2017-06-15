@@ -1,4 +1,4 @@
-package com.bambina.sharedlist
+package com.bambina.sharedlist.adapter
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
@@ -6,26 +6,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.bambina.sharedlist.ShopListApplication.Companion.application
+import com.bambina.sharedlist.R
+import com.bambina.sharedlist.SharedListApi
+import com.bambina.sharedlist.SharedListApplication.Companion.application
+import com.bambina.sharedlist.model.ErrandList
+import com.bambina.sharedlist.model.Task
 import com.jakewharton.rxbinding2.view.RxView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
+import kotlinx.android.synthetic.main.list_task.view.*
 
-import kotlinx.android.synthetic.main.list_item.view.*
 import javax.inject.Inject
 
 /**
  * Created by hirono-mayuko on 2017/06/06.
  */
-class ShopListRecyclerAdapter(val data : ErrandList, val context : Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class TaskRecyclerAdapter(val data : ErrandList, val context : Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
-        val view = LayoutInflater.from(parent?.context).inflate(R.layout.list_item, parent, false)
+        val view = LayoutInflater.from(parent?.context).inflate(R.layout.list_task, parent, false)
         return ViewHolder(view, context)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
-        (holder as ShopListRecyclerAdapter.ViewHolder).setData(data.errand.id, data.tasks[position])
+        (holder as ViewHolder).setData(data.errand.id, data.tasks[position])
     }
 
     override fun getItemCount(): Int = data.tasks.size
@@ -33,7 +37,7 @@ class ShopListRecyclerAdapter(val data : ErrandList, val context : Context) : Re
     class ViewHolder(itemView : View, val context: Context) : RecyclerView.ViewHolder(itemView) {
 
         @Inject
-        lateinit var api : ShopListApi
+        lateinit var api : SharedListApi
 
         init {
             application.component.inject(this)

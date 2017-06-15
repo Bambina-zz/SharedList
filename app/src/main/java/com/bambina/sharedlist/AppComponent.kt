@@ -1,6 +1,8 @@
 package com.bambina.sharedlist
 
 
+import com.bambina.sharedlist.adapter.TaskRecyclerAdapter
+import com.bambina.sharedlist.fragment.TaskListFragment
 import dagger.Component
 import javax.inject.Singleton
 /**
@@ -10,9 +12,9 @@ import javax.inject.Singleton
 @Component(modules = arrayOf( NetworkModule::class ))
 @Singleton
 interface AppComponent {
-    fun api(): ShopListApi
+    fun api(): SharedListApi
 
-    fun inject(activity : MainActivity)
+    fun inject(holder : TaskRecyclerAdapter.ViewHolder)
 
-    fun inject(holder : ShopListRecyclerAdapter.ViewHolder)
+    fun inject(fragment : TaskListFragment)
 }

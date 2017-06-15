@@ -28,7 +28,7 @@ class NetworkModule {
                 .build()
     }
 
-    @Provides @Singleton internal fun provideApi(@Named("Api") retrofit : Retrofit): ShopListApi {
-        return ShopListApiClient(retrofit)
+    @Provides @Singleton internal fun provideApi(@Named("Api") retrofit : Retrofit): SharedListApi {
+        return SharedListApiClient(retrofit)
     }
 }

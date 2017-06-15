@@ -5,9 +5,9 @@ import android.app.Application
 /**
  * Created by hirono-mayuko on 2017/06/05.
  */
-class ShopListApplication : Application() {
+class SharedListApplication : Application() {
     companion object {
-        lateinit var application : ShopListApplication
+        lateinit var application : SharedListApplication
     }
 
     val component : AppComponent by lazy {
@@ -16,7 +16,7 @@ class ShopListApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        ShopListApplication.application = this
+        SharedListApplication.application = this
     }
 
     fun getNetworkModule(): NetworkModule = NetworkModule()

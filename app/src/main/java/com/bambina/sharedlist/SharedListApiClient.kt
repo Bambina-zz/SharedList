@@ -1,5 +1,6 @@
 package com.bambina.sharedlist
 
+import com.bambina.sharedlist.model.ErrandList
 import io.reactivex.Observable
 import retrofit2.Retrofit
 import retrofit2.http.*
@@ -7,7 +8,7 @@ import retrofit2.http.*
 /**
  * Created by hirono-mayuko on 2017/06/05.
  */
-class ShopListApiClient(retrofit : Retrofit) : ShopListApi {
+class SharedListApiClient(retrofit : Retrofit) : SharedListApi {
 
     interface Service {
         @Headers("Accept: application/json")
